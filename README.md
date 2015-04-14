@@ -45,27 +45,27 @@ by default, the both client and server start on the same host.
 
 The behavior of the treetable is controlled by a set of global variables in the root (x.q):
 
-	T:`                                                      / underlying table
-	Q::.ht.qtype T                                           / qtypes
-	N::count Z                                               / treetable count
-	F::cols[T]except G                                       / visible order
-	G:()                                                     / group by 
-	H::.ht.groupable T                                       / groupable
-	I::cols[T]except G,F                                     / invisible (can be rolled up)
-	A:()!()                                                  / rollup functions
-	P:.ht.P                                                  / instruction state
-	R:`start`end!0 100                                       / rows -> gui
-	S:()!()                                                  / sorts (`a|`d|`A|`D)
+	T:`                                                           / underlying table
+	Q::.ht.qtype T                                                / qtypes
+	N::count Z                                                    / treetable count
+	F::cols[T]except G                                            / visible order
+	G:()                                                          / group by 
+	H::.ht.groupable T                                            / groupable
+	I::cols[T]except G,F                                          / invisible (can be rolled up)
+	A:()!()                                                       / rollup functions
+	P:.ht.P                                                       / instruction state
+	R:`start`end!0 100                                            / rows -> gui
+	S:()!()                                                       / sorts (`a|`d|`A|`D)
 
 Example settings (used in the demo):
 
 	T:`t
 	G:`sector`trader`strategy`symbol
 	F:`N`wprice`wprice_`price`price_`quantity`date`time,f
-	A[`price_]:((sum;`price_);(%;`price_;`N))                / map-reduce = (map;red)
-	A[`price]:(avg;`price)                                   / bottom up version
-	A[`wprice_]:enlist({sum[x*y]%sum x};`quantity;`wprice_)  / map, reduce is a no-op
-	A[`wprice]:(wavg;`quantity;`wprice)                      / bottom up version
+	A[`price_]:((sum;`price_);(%;`price_;`N))                     / map-reduce = (map;red)
+	A[`price]:(avg;`price)                                        / bottom up version
+	A[`wprice_]:enlist parse"sum[quantity*wprice_]%sum quantity"  / map, reduce is a no-op
+	A[`wprice]:(wavg;`quantity;`wprice)                           / bottom up version
 	
 --------------------------------------------------
 

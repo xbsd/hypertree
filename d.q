@@ -33,7 +33,7 @@ G:`sector`trader`strategy`symbol
 F:`N`wprice`wprice_`price`price_`quantity`date`time,f
 A[`price_]:((sum;`price_);(%;`price_;`N))				/ map-reduce = (map;red)
 A[`price]:(avg;`price)							/ bottom up version
-A[`wprice_]:enlist({sum[x*y]%sum x};`quantity;`wprice_)			/ map, reduce is a no-op
+A[`wprice_]:enlist parse"sum[quantity*wprice_]%sum quantity"		/ map, reduce is elided
 A[`wprice]:(wavg;`quantity;`wprice)					/ bottom up version
 
 / update
