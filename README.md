@@ -1,7 +1,7 @@
 # hypertree
 hypergrid treetable
 
-[hypergrid control](http://openfin.github.io/fin-hypergrid/components/fin-hypergrid/demo.html)
+[hypergrid control](http://openfin.github.io/fin-hypergrid/components/fin-hypergrid/demo.html?tab=4)
 
 <img src="images/ht.png">
 
