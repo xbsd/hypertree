@@ -71,6 +71,6 @@ Example settings (used in the demo):
 
 For a description of the bottom-up treetable algorithm used in this project, see http://archive.vector.org.uk/art10500340.
 
-The top-down algorithm ("map-reduce") is new.  A paper on the method will eventually appear in Vector.
+The top-down algorithm, a variety of map-reduce, is new.  A paper on the method will eventually appear in Vector.
 
 
