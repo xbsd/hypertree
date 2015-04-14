@@ -37,7 +37,7 @@ $[.z.K<3.3;
 .js.row:{$[0 0W~y,z;x;y>=count x;0#x;((1+z-y)&count r)#r:y _ x]}
 .js.obj:{`Z`G`H`F`I`Q`S`R`N`T!(.js.sub Z;G;H;F;I;Q;`cols`sorts!(key S;get S);R;N;T)}
 .js.ret:{x,.js.obj[]}
-.js.upd:{if[not null J;t:.z.z;`Z set();@[`P;1;:;.ht.P 1];.js.snd .js.set()!();.js.log[t]`upd]}
+.js.upd:{if[not null J;t:.z.z;`Z set();P[1]:.ht.P 1;.js.snd .js.set()!();.js.log[t]`upd]}
 
 / define Z
 .js.set()!();
