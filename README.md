@@ -1,4 +1,4 @@
-# tt
+# hypertree
 hypergrid treetable
 
 [hypergrid control](http://openfin.github.io/fin-hypergrid/components/fin-hypergrid/demo.html)
