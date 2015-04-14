@@ -37,7 +37,7 @@ A[`wprice_]:enlist parse"sum[quantity*wprice_]%sum quantity"		/ map, reduce is e
 A[`wprice]:(wavg;`quantity;`wprice)					/ bottom up version
 
 / update
-.z.ts:{t[::;`quantity]+:-5+n?10;t[::;`price]+:-.5+n?1.;t[::;f]+:(n,m)#1000*-.5+(n*m)?1.;.js.ups`price`quantity,f;}
+.z.ts:{t[::;`quantity]+:-5+n?10;t[::;`price]+:-.5+n?1.;t[::;f]+:(n,m)#1000*-.5+(n*m)?1.;.js.upd`;}
 
 \
 

@@ -48,7 +48,7 @@ open:{[z;t;a;g;f;p;p_]
 / types (map-reduce, map, reduce)
 m_r:{[a](0=type a)|first[a]in A}
 m_:{[a]$[0=type m:first a;m;a]}
-r_:{[a]$[0=type first a;();first 1_a]}
+r_:{[a]$[0=type first a;first 1_a;()]}
 
 / compute top-down (map-reduce)
 map:{[t;a;g;f;p;p_]key[z]!flip f!get[z:1!(0<count p_)_mapr[t;g;a;p]. recur[p]p_]f}

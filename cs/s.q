@@ -24,8 +24,7 @@ K:0Ni
 .js.set:{`Z set .ht.cons[Z;T;P;A;S;G]F;.js.ret x}
 .js.obj:{{x!get each x}`Z`G`H`F`I`Q`S`R`N`T}
 .js.ret:{x,.js.obj[]}
-.js.upd:{if[not null K;neg[K](`.js.exe;.js.set()!())]}
-.js.ups:{if[not null K;`Z set 0!(`n_ xkey Z)upsert`n_ xkey .ht.cons[Z;T;P;A;S;G]x inter cols Z;neg[K](`.js.exe;.js.ret()!())]}
+.js.upd:{if[not null J;t:.z.z;`Z set();@[`P;1;:;.ht.P 1];.js.snd .js.set()!();.js.log[t]`upd]}
 
 / define Z
 .js.set()!();

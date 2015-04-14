@@ -4,7 +4,6 @@
 \p 12345
 \P 14
 \c 25 150
-\t 2000
 
 / connect to server
 K:0Ni

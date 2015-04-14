@@ -17,7 +17,7 @@ common to c and cs
 c/: hypergrid treetable client
 ------------------------------
 
-start treetable web client (default port 12345. \t = 0):
+start treetable web client (default port 12345, \t = 0):
 
 	cd hypertree/c
 	q c.q
