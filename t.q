@@ -43,7 +43,7 @@ open:{[z;t;a;g;f;p;p_]
  s:$[count m;map[t;(m_ each n:m#a),g#a;g;m;p]p_;()];
  u:$[not count r;s;not count s;r;lj[r]s];
  a:1!order[f]0!red[u]where[0<count each k]#k:r_ each n;
- `n_ xasc 0!z,a}
+ delete N_ from `N_ xasc update N_:`$string n_ from 0!z,a}
 
 / types (map-reduce, map, reduce)
 m_r:{[a](0=type a)|first[a]in A}

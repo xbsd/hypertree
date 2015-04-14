@@ -3,7 +3,7 @@
 \e 1
 \P 14
 
-/ example
+/ example 1
 
 symbol:`msft`amat`csco`intc`yhoo`aapl
 trader:`chico`harpo`groucho`zeppo`moe`larry`curly`shemp`abbott`costello
@@ -47,4 +47,25 @@ P:(([n:((`symbol$())					!();
 	 (1#`sector)					!1#`industrials)]
 	v:1111101b);([n:()]v:til 0))
 
+/ example 2
 
+/ simon garland:
+yahoo:{[offset;stocks]
+ tbl:();i:0;zs:(ze:.z.d)-offset;
+ parms:"&d=",(string -1+`mm$ze),"&e=",(string`dd$ze),"&f=",(string`year$ze),"&g=d&a=",(string -1+`mm$zs),"&b=",(string`dd$zs),"&c=",(string`year$zs),"&ignore=.csv";
+ do[count stocks:distinct stocks,();
+  txt:`:http://ichart.finance.yahoo.com "GET /table.csv?s=",(string stock:stocks[i]),parms," http/1.0\r\nhost:ichart.finance.yahoo.com\r\n\r\n";
+  tbl,:update Sym:stock from select from ("DEEEEI ";enlist",")0:(txt ss"Date,Open")_ txt;i+:1];
+ (lower cols tbl)xcol`Date`Sym xasc select from tbl where not null Volume}  
+
+/ ed bierly:
+u:yahoo[1000]`GOOG`MSFT`AAPL`CSCO`IBM`INTL
+t:update N:1,mpl:sum pnl by"m"$date,sym from update pnl:0^volume*close-prev close by sym from u
+
+/ connect to hypertable:
+T:`t
+G:`sym`date
+F:`N,f:`open`high`low`close`volume`pnl`mpl
+A[f]:avg,/:f
+
+\

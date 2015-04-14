@@ -20,11 +20,11 @@ K:0Ni
 
 / utilities
 .js.exe:{.js[x`fn]x}
-.js.cnv:{[n]raze@[flip enlist n;i;{y$x};q i:where"s"<>q:Q count[n]#G]}
+.js.cnv:{[n]raze@[flip enlist n;i;{y$string x};upper q i:where"s"<>q:Q count[n]#G]}
 .js.set:{`Z set .ht.cons[Z;T;P;A;S;G]F;.js.ret x}
 .js.obj:{{x!get each x}`Z`G`H`F`I`Q`S`R`N`T}
 .js.ret:{x,.js.obj[]}
-.js.upd:{if[not null K;`Z set();@[`P;1;:;.ht.P 1];neg[K](`.js.exe;.js.set()!())]}
+.js.upd:{if[not null K;`Z set();P[1]:.ht.P 1;neg[K](`.js.exe;.js.set()!())]}
 
 / define Z
 .js.set()!();

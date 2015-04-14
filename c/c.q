@@ -30,7 +30,7 @@ $[.z.K<3.3;
 
 / utilities
 .js.sym:{$[(t:abs type x)in 0 99h;.z.s each x;10=t;`$x;x]}
-.js.cnv:{[n]raze@[flip enlist n;i;{y$x};q i:where"s"<>q:Q count[n]#G]}
+.js.cnv:{[n]raze@[flip enlist n;i;{y$string x};upper q i:where"s"<>q:Q count[n]#G]}
 .js.exe:{.js[x`fn]x}
 .js.set:{`Z set .ht.cons[Z;T;P;A;S;G]F;.js.ret x}
 .js.sub:{flip each(1#x;.js.row[1_x]. R`start`end)}
