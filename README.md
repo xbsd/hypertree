@@ -30,7 +30,7 @@ start client process (default port 12345, \t = 0 = no updates):
 	cd hypertree/cs
 	q c.q
 
-start server process (default port 12346, \t = 500):
+start server process (default port 12346, \t = 1000):
 
 	cd hypertree/cs
 	q s.q
