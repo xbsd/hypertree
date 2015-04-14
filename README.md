@@ -3,23 +3,23 @@ hypergrid treetable
 
 [hypergrid control](http://openfin.github.io/fin-hypergrid/components/fin-hypergrid/demo.html)
 
-<img src="images/tt.png">
+<img src="images/ht.png">
 
 ----------------------------------------------------------------------------------------------
 
 common to c and cs
 ------------------
 
-	tt/t.q			treetable code
-	tt/x.q			treetable globals
-	tt/d.q			example data
+	hypertree/t.q			treetable code
+	hypertree/x.q			treetable globals
+	hypertree/d.q			example data
 
 c/: hypergrid treetable client
 ------------------------------
 
 start treetable web client (default port 12345. \t = 0):
 
-	cd tt/c
+	cd hypertree/c
 	q c.q
 
 cs/: client-server hypergrid treetable
@@ -27,12 +27,12 @@ cs/: client-server hypergrid treetable
 
 start client process (default port 12345, \t = 0 = no updates):
 
-	cd tt/cs
+	cd hypertree/cs
 	q c.q
 
 start server process (default port 12346, \t = 500):
 
-	cd tt/cs
+	cd hypertree/cs
 	q s.q
 
 client and server processes may be started in either order.
@@ -46,14 +46,14 @@ by default, the both client and server start on the same host.
 The behavior of the treetable is controlled by a set of global variables in the root (x.q):
 
 	T:`                                                      / underlying table
-	Q::.tt.qtype T                                           / qtypes
+	Q::.ht.qtype T                                           / qtypes
 	N::count Z                                               / treetable count
 	F::cols[T]except G                                       / visible order
 	G:()                                                     / group by 
-	H::.tt.groupable T                                       / groupable
+	H::.ht.groupable T                                       / groupable
 	I::cols[T]except G,F                                     / invisible (can be rolled up)
 	A:()!()                                                  / rollup functions
-	P:.tt.P                                                  / instruction state
+	P:.ht.P                                                  / instruction state
 	R:`start`end!0 100                                       / rows -> gui
 	S:()!()                                                  / sorts (`a|`d|`A|`D)
 

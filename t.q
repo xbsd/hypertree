@@ -1,6 +1,6 @@
 // treetable
 
-\d .tt
+\d .ht
 
 / construct treetable
 cons:{[z;t;p;a;s;g;f]cons_[z;t;p;req[a;f,g]#rollups[t;g]a;s;g]distinct f,g}

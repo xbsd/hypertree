@@ -1,7 +1,7 @@
 // globals
 
 / qtypes
-Q::.tt.qtype T
+Q::.ht.qtype T
 
 / count of Z
 N::count Z
@@ -13,7 +13,7 @@ F::cols[T]except G
 G:()
 
 / groupable
-H::.tt.groupable T
+H::.ht.groupable T
 
 / invisible
 I::cols[T]except G,F
@@ -22,7 +22,7 @@ I::cols[T]except G,F
 A:()!()
 
 / instruction state (current;prior)
-P:.tt.P
+P:.ht.P
 
 / rows -> gui
 R:`start`end!0 100

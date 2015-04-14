@@ -13,19 +13,19 @@ K:0Ni
 .z.ps:{neg[K](`.js.exe;.js.exe x)}
 
 / entry points
-.js.node:{[d]$[0=count n:.js.cnv d`node;d;count[Z]=r:Z[`n_]?n;d;[`P set .tt.at[not Z[`o_]r;P;G]n;.js.set d]]}
-.js.sorts:{[d]`S set d[`cols]!d`sorts;`Z set .tt.sort[Z]S;.js.ret d}
-.js.groups:{[d]`F`G set'.js.sym d`visible`groups;`P set .tt.vpaths[P]G;`Z set();.js.set d}
+.js.node:{[d]$[0=count n:.js.cnv d`node;d;count[Z]=r:Z[`n_]?n;d;[`P set .ht.at[not Z[`o_]r;P;G]n;.js.set d]]}
+.js.sorts:{[d]`S set d[`cols]!d`sorts;`Z set .ht.sort[Z]S;.js.ret d}
+.js.groups:{[d]`F`G set'.js.sym d`visible`groups;`P set .ht.vpaths[P]G;`Z set();.js.set d}
 .js.get:{[d]`R set`start`end!"j"$d`start`end;.js.ret d}
 
 / utilities
 .js.exe:{.js[x`fn]x}
 .js.cnv:{[n]raze@[flip enlist n;i;{y$x};q i:where"s"<>q:Q count[n]#G]}
-.js.set:{`Z set .tt.cons[Z;T;P;A;S;G]F;.js.ret x}
+.js.set:{`Z set .ht.cons[Z;T;P;A;S;G]F;.js.ret x}
 .js.obj:{{x!get each x}`Z`G`H`F`I`Q`S`R`N`T}
 .js.ret:{x,.js.obj[]}
 .js.upd:{if[not null K;neg[K](`.js.exe;.js.set()!())]}
-.js.ups:{if[not null K;`Z set 0!(`n_ xkey Z)upsert`n_ xkey .tt.cons[Z;T;P;A;S;G]x inter cols Z;neg[K](`.js.exe;.js.ret()!())]}
+.js.ups:{if[not null K;`Z set 0!(`n_ xkey Z)upsert`n_ xkey .ht.cons[Z;T;P;A;S;G]x inter cols Z;neg[K](`.js.exe;.js.ret()!())]}
 
 / define Z
 .js.set()!();
