@@ -14,7 +14,7 @@ K:0Ni
 
 / entry points
 .js.node:{[d]$[0=count n:.js.cnv d`node;d;count[Z]=r:Z[`n_]?n;d;[`P set .ht.at[not Z[`o_]r;P;G]n;.js.set d]]}
-.js.sorts:{[d]`S set d[`cols]!d`sorts;`Z set .ht.sort[Z]S;.js.ret d}
+.js.sorts:{[d]`S set d[`cols]!d`sorts;`Z set .ht.sort[Z;G]S;.js.ret d}
 .js.groups:{[d]`F`G set'.js.sym d`visible`groups;`P set .ht.vpaths[P]G;`Z set();.js.set d}
 .js.get:{[d]`R set`start`end!"j"$d`start`end;.js.ret d}
 
