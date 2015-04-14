@@ -1,6 +1,6 @@
 // treetable server
 
-\t 500
+\t 1000
 
 \l ../t.q
 \l ../x.q

@@ -24,20 +24,16 @@ t:([]
 
 t:update price_:price,wprice:price,wprice_:price from t
 
-m:10
-f:`$"f",'string til m
-t:flip(flip 0!t),f!(m,n)#1000*-.5+(n*m)?1.
-
 T:`t
 G:`sector`trader`strategy`symbol
-F:`N`wprice`wprice_`price`price_`quantity`date`time,f
+F:`N`wprice`wprice_`price`price_`quantity`date`time
 A[`price_]:((sum;`price_);(%;`price_;`N))				/ map-reduce = (map;red)
 A[`price]:(avg;`price)							/ bottom up version
 A[`wprice_]:enlist parse"sum[quantity*wprice_]%sum quantity"		/ map, reduce is elided
 A[`wprice]:(wavg;`quantity;`wprice)					/ bottom up version
 
 / update
-.z.ts:{t[::;`quantity]+:-5+n?10;t[::;`price]+:-.5+n?1.;t[::;f]+:(n,m)#1000*-.5+(n*m)?1.;.js.upd`;}
+.z.ts:{t[::;`quantity]+:-5+n?10;t[::;`price]+:-.5+n?1.;.js.upd`;}
 
 \
 
