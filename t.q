@@ -152,7 +152,7 @@ tsort:{[t;g;c;o]
  if[`g_ in c;t:update g_:` from t where e_];
  if[`g_~first -1_c;c:`G_,1_c;t:update G_:?[l_>1;`;g_]from t];
  n:reverse exec i by L_ from s:dsort[t;g;c;o]where L_>0;
- 0,raze$[1=count n;s[`I_]n;msort[s;g]/[();key n;get n]]}
+ 0,raze$[1=count n;s[`I_]n;merge[s;g]/[();key n;get n]]}
 
 / column sort
 csort:{[c;o]@[flip(@;abs;c;c);i;:;c i:where o in`a`d]}
@@ -169,8 +169,8 @@ dsort:{[t;g;c;o]
  $[s;?[t;();0b;a;0W;(first o;esort c)];?[t;();0b;a]rsort[t;c]o]}
 
 / sort-level
-lsort:{[s;g;n;i]c:((m:n&count g)#g),`I_;(delete I_ from t)!flip enlist(t:(c#s)i)`I_}
+level:{[s;g;n;i]c:((m:n&count g)#g),`I_;(delete I_ from t)!flip enlist(t:(c#s)i)`I_}
 
 / merge sort-levels
-msort:{[s;g;x;n;i]v:lsort[s;g;n;i];$[count x;@[v;(keys v)#key x;,;get x];v]}
+merge:{[s;g;x;n;i]v:level[s;g;n;i];$[count x;@[v;(keys v)#key x;,;get x];v]}
 
