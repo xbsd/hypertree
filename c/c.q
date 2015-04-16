@@ -25,7 +25,7 @@ $[.z.K<3.3;
 
 / logging
 .js.log:{0N!(.js.elt x;y);}
-.js.snd:{neg[J].j.j x}
+.js.snd:{neg[J]QQ::.j.j x}
 .js.elt:{`time$"z"$.z.z-x}
 
 / utilities

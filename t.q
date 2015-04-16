@@ -3,8 +3,8 @@
 \d .ht
 
 / construct treetable
-cons:{[z;t;p;a;s;g;f]cons_[z;t;p;req[a;f,g]#rollups[t;g]a;s;g]distinct f,g}
-cons_:{[z;t;p;a;s;g;f]sort[ctl[p 0;g]dat[unctl z;t;a;g;f]. visible each p;g]s}
+cons:{[z;t;p;a;s;g;f]cons_[z;t;p;rollups[t;g]a;s;g]req[a]f,g}
+cons_:{[z;t;p;a;s;g;f]sort[ctl[p 0;g]dat[unctl z;t;f#a;g;f]. visible each p;g]s}
 
 / required
 req:{[a;f]distinct[f,q where -11=type each q:raze over a f]except`}
