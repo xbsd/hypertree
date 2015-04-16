@@ -18,7 +18,7 @@ t:([]
  trader:n?trader;
  strategy:n?strategy;
  price:{0.01*"i"$100*x}20+n?400.;
- quantity:-49+n?100; 
+ quantity:-1 1[n?2]*n?100; 
  date:2000.01.01+asc n?365;
  time:09:30:00.0+n?06:30)
 
@@ -33,7 +33,7 @@ A[`wprice_]:enlist parse"sum[wprice_*quantity]%sum quantity"		/ map, reduce is e
 A[`wprice]:(wavg;`quantity;`wprice)					/ bottom up version
 
 / update
-.z.ts:{t[::;`quantity]+:-49+n?100;t[::;`price]+:-.5+n?1.;.js.upd`;}
+.z.ts:{t[::;`quantity]+:-1 1[n?2]*n?100;t[::;`price]+:-.5+n?1.;.js.upd`;}
 
 \
 
