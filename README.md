@@ -56,7 +56,7 @@ The behavior of the treetable is controlled by a set of global variables in the 
 	P:.ht.P                                                       / instruction state
 	R:`start`end!0 100                                            / rows -> gui
 	S:()!()                                                       / sorts (`a|`d|`A|`D)
-        O:()!()                                                       / object properties
+        O.:(::)                                                       / object properties
 
 Example settings (used in the demo):
 

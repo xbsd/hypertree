@@ -23,6 +23,8 @@ T:`t
 G:`sym`date
 F:`N,f:`open`high`low`close`volume`pnl`mpl
 A[f]:avg,/:f
+O.columns.volume:`VOL
+O.columns.open:`TEST
 
 \
 
