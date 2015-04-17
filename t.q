@@ -142,7 +142,7 @@ rollups_:{[t;a]@[a;k;:;A[lower qtype[t]k],'k:cols[t]except key a]}
 qtype:{exec c!t from meta x}
 
 / groupable columns in x
-groupable:{exec c from meta 0!x where t in"bhijspmdznuvt",not c in keys x}
+groupable:{exec c from meta 0!get x where t in"bhijspmdznuvt",not c in keys x}
 
 / intuitive treetable sort
 sort:{[t;g;s]$[count s;t tsort[t;g;key s]get s;t]}

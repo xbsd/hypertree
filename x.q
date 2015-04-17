@@ -10,7 +10,7 @@ N::count Z
 F::cols[T]except G
 
 / group by
-G:()
+G::1#H
 
 / groupable
 H::.ht.groupable T
