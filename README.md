@@ -49,13 +49,14 @@ The behavior of the treetable is controlled by a set of global variables in the 
 	Q::.ht.qtype T                                                / qtypes
 	N::count Z                                                    / treetable count
 	F::cols[T]except G                                            / visible order
-	G:()                                                          / group by 
+	G:1#H                                                         / group by 
 	H::.ht.groupable T                                            / groupable
 	I::cols[T]except G,F                                          / invisible (can be rolled up)
 	A:()!()                                                       / rollup functions
 	P:.ht.P                                                       / instruction state
 	R:`start`end!0 100                                            / rows -> gui
 	S:()!()                                                       / sorts (`a|`d|`A|`D)
+        O:()!()                                                       / object properties
 
 Example settings (used in the demo):
 
