@@ -1,5 +1,8 @@
 // globals
 
+/ object properties
+O:()!()
+
 / qtypes
 Q::.ht.qtype T
 
