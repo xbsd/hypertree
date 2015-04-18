@@ -57,6 +57,7 @@ The behavior of the treetable is controlled by a set of global variables in the 
 	R:`start`end!0 100                                            / rows -> gui
 	S:()!()                                                       / sorts (`a|`d|`A|`D)
         O.:(::)                                                       / object properties
+	L:1b                                                          / expand to leaves (1b) or not (0b)
 
 Example settings (used in the demo):
 
