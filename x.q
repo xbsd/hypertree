@@ -6,6 +6,9 @@ O.:(::)
 / qtypes
 Q::.ht.qtype T
 
+/ expand to leaves
+L:1b
+
 / count of Z
 N::count Z
 

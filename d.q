@@ -3,31 +3,6 @@
 \e 1
 \P 14
 
-/ example 2
-
-/ simon garland:
-yahoo:{[offset;stocks]
- tbl:();i:0;zs:(ze:.z.d)-offset;
- parms:"&d=",(string -1+`mm$ze),"&e=",(string`dd$ze),"&f=",(string`year$ze),"&g=d&a=",(string -1+`mm$zs),"&b=",(string`dd$zs),"&c=",(string`year$zs),"&ignore=.csv";
- do[count stocks:distinct stocks,();
-  txt:`:http://ichart.finance.yahoo.com "GET /table.csv?s=",(string stock:stocks[i]),parms," http/1.0\r\nhost:ichart.finance.yahoo.com\r\n\r\n";
-  tbl,:update Sym:stock from select from ("DEEEEI ";enlist",")0:(txt ss"Date,Open")_ txt;i+:1];
- (lower cols tbl)xcol`Date`Sym xasc select from tbl where not null Volume}  
-
-/ ed bierly:
-u:yahoo[1000]`GOOG`MSFT`AAPL`CSCO`IBM`INTL
-t:update N:1,mpl:sum pnl by"m"$date,sym from update pnl:0^volume*close-prev close by sym from u
-
-/ connect to hypertable:
-T:`t
-G:`sym`date
-F:`N,f:`open`high`low`close`volume`pnl`mpl
-A[f]:avg,/:f
-O.columns.volume:`VOL
-O.columns.open:`TEST
-
-\
-
 / example 1
 
 symbol:`msft`amat`csco`intc`yhoo`aapl
@@ -48,17 +23,23 @@ t:([]
  time:09:30:00.0+n?06:30)
 
 t:update price_:price,wprice:price,wprice_:price from t
+t:update pnl:quantity*price-prev price by symbol from t
 
 T:`t
 G:`sector`trader`strategy`symbol
-F:`N`wprice`wprice_`price`price_`quantity`date`time
+F:`N`pnl`wprice`wprice_`price`price_`quantity`date`time
 A[`price_]:((sum;`price_);(%;`price_;`N))				/ map-reduce = (map;red)
 A[`price]:(avg;`price)							/ bottom up version
 A[`wprice_]:enlist parse"sum[wprice_*quantity]%sum quantity"		/ map, reduce is elided
 A[`wprice]:(wavg;`quantity;`wprice)					/ bottom up version
+A[`pnl]:(avg;`pnl)
 
 / update
-.z.ts:{t[::;`quantity]+:-1 1[n?2]*n?100;t[::;`price]+:-.5+n?1.;.js.upd`;}
+.z.ts:{
+ t[::;`quantity]+:-1 1[n?2]*n?100;t[::;`price]+:-.5+n?1.;
+ t::update pnl:quantity*price-prev price by symbol from t;
+ .js.upd`;
+ }
 
 \
 
@@ -72,9 +53,10 @@ P:(([n:((`symbol$())					!();
 	 (1#`sector)					!1#`industrials)]
 	v:1111101b);([n:()]v:til 0))
 
+\
+
 / example 2
 
-/ simon garland:
 yahoo:{[offset;stocks]
  tbl:();i:0;zs:(ze:.z.d)-offset;
  parms:"&d=",(string -1+`mm$ze),"&e=",(string`dd$ze),"&f=",(string`year$ze),"&g=d&a=",(string -1+`mm$zs),"&b=",(string`dd$zs),"&c=",(string`year$zs),"&ignore=.csv";
@@ -83,14 +65,38 @@ yahoo:{[offset;stocks]
   tbl,:update Sym:stock from select from ("DEEEEI ";enlist",")0:(txt ss"Date,Open")_ txt;i+:1];
  (lower cols tbl)xcol`Date`Sym xasc select from tbl where not null Volume}  
 
-/ ed bierly:
-u:yahoo[1000]`GOOG`MSFT`AAPL`CSCO`IBM`INTL
+u:yahoo[1000]`GOOG`MSFT`AAPL`CSCO`IBM`INTL`SPY`AAPL`XLF`EEM`IWM`NOK`BAC`GE`AMD
 t:update N:1,mpl:sum pnl by"m"$date,sym from update pnl:0^volume*close-prev close by sym from u
 
 / connect to hypertable:
 T:`t
 G:`sym`date
-F:`N,f:`open`high`low`close`volume`pnl`mpl
-A[f]:avg,/:f
+F:`N,`open`high`low`close`volume`pnl`mpl
+A[1_F]:avg,/:1_F
+
+/ example 3
+
+t:get`:../itunes
+
+T:`t
+G:`Genre`Album`Artist`Name
+F:`Size`Total_Time`Disc_Number`Disc_Count`Track_Number`Track_Count`Year`Bit_Rate`Sample_Rate`Date_Added`Date_Modified
+L:0b
+
+Max:{max 0^x}
+A[`Year]:(Max;`Year)
+A[`Disc_Number]:(Max;`Disc_Number)
+A[`Bit_Rate]:(Max;`Bit_Rate)
+A[`Sample_Rate]:(Max;`Sample_Rate)
 
 \
+
+/ example 4
+t:raze{("ZSFIISI";1#",")0:hsym`$"../e/",x}each string key`:../e
+
+T:`t
+G:`exchange`instrument
+A[`sourcetime]:(max;`sourcetime)
+A[`price]:(avg;`price)
+A[`size]:(avg;`size)
+
