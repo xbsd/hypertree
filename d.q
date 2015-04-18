@@ -17,7 +17,7 @@ yahoo:{[offset;stocks]
   i+:1];
  (lower cols tbl)xcol`Date`Sym xasc select from tbl where not null Volume}  
 
-t:update N:1 from yahoo[100]exec sym from stocks where i in -100?count sym
+t:update N:1 from yahoo[30]exec sym from stocks where i in neg[rand 200]?count sym
 t:t lj 1!stocks
 t:raze{update trader:count[sym]#x from select from t where i in neg[rand count sym]?count sym}each traders
 t:update mpl:sum pnl by"m"$date,sym from update pnl:0^volume*close-prev close by sym from t
@@ -25,11 +25,12 @@ t:update row:i from t
 
 / connect to hypertable:
 T:`t
-G:`trader`sector`industry`sym
-F:`N`row`date`name`open`high`low`close`volume`pnl`mpl`lastsale`marketcap`ipoyear
+G:`trader`date`sector`industry`sym
+F:`N`row`open`high`low`close`volume`pnl`mpl`lastsale`marketcap`ipoyear
 A[f]:avg,/:f:`open`high`low`close`pnl`mpl
 A[`volume]:(max;`volume)
 A[`row]:(last;`row)
+L:0b
 
 / update
 .z.ts:{
