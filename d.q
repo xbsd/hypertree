@@ -5,29 +5,38 @@
 
 / example 2
 
+traders:(`$read0`:../yahoo/traders.txt)except`
+stocks:`sym`name`lastsale`marketcap`ipoyear`sector`industry xcol("SSFSSSS";1#",")0:`:../yahoo/stocks.csv
+
 yahoo:{[offset;stocks]
  tbl:();i:0;zs:(ze:.z.d)-offset;
  parms:"&d=",(string -1+`mm$ze),"&e=",(string`dd$ze),"&f=",(string`year$ze),"&g=d&a=",(string -1+`mm$zs),"&b=",(string`dd$zs),"&c=",(string`year$zs),"&ignore=.csv";
  do[count stocks:distinct stocks,();
   txt:`:http://ichart.finance.yahoo.com "GET /table.csv?s=",(string stock:stocks[i]),parms," http/1.0\r\nhost:ichart.finance.yahoo.com\r\n\r\n";
-  tbl,:update Sym:stock from select from ("DEEEEI ";enlist",")0:(txt ss"Date,Open")_ txt;i+:1];
+  if[0=count ss[txt;"404 Not Found"];tbl,:update Sym:stock from select from ("DEEEEI ";1#",")0:(txt ss"Date,Open")_ txt];
+  i+:1];
  (lower cols tbl)xcol`Date`Sym xasc select from tbl where not null Volume}  
 
-t:update N:1 from yahoo[1000]`GOOG`MSFT`AAPL`CSCO`IBM`INTL`SPY`AAPL`XLF`EEM`IWM`NOK`BAC`GE`AMD
+t:update N:1 from yahoo[100]exec sym from stocks where i in -100?count sym
+t:t lj 1!stocks
+t:raze{update trader:count[sym]#x from select from t where i in neg[rand count sym]?count sym}each traders
 t:update mpl:sum pnl by"m"$date,sym from update pnl:0^volume*close-prev close by sym from t
+t:update row:i from t
 
 / connect to hypertable:
 T:`t
-G:`sym`date
-F:`N,`open`high`low`close`volume`pnl`mpl
-A[1_F]:avg,/:1_F
+G:`trader`sector`industry`sym`date
+F:`N`row`name`open`high`low`close`volume`pnl`mpl`lastsale`marketcap`ipoyear
+A[f]:avg,/:f:`open`high`low`close`pnl`mpl
+A[`volume]:(max;`volume)
+A[`row]:(last;`row)
 L:0b
 
 / update
 .z.ts:{
  n:count t;
  t[::;`volume]+:-1 1[n?2]*n?100;
- t::update mpl:sum pnl by"m"$date,sym from update pnl:0^volume*close-prev close by sym from t;
+ t::update mpl:sum pnl by"m"$date,sym from update pnl:0^volume*close-prev close by sym,trader from t;
  .js.upd`;
  }
 
