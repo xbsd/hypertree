@@ -25,12 +25,11 @@ t:update row:i from t
 
 / connect to hypertable:
 T:`t
-G:`trader`sector`industry`sym`date
-F:`N`row`name`open`high`low`close`volume`pnl`mpl`lastsale`marketcap`ipoyear
+G:`trader`sector`industry`sym
+F:`N`row`date`name`open`high`low`close`volume`pnl`mpl`lastsale`marketcap`ipoyear
 A[f]:avg,/:f:`open`high`low`close`pnl`mpl
 A[`volume]:(max;`volume)
 A[`row]:(last;`row)
-L:0b
 
 / update
 .z.ts:{
