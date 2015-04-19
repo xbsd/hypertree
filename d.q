@@ -96,7 +96,7 @@ P:(([n:((`symbol$())					!();
 
 / example 3
 
-t:get`:../itunes
+t:get`:../../itunes
 
 T:`t
 G:`Genre`Album`Artist`Name
@@ -110,13 +110,3 @@ A[`Bit_Rate]:(Max;`Bit_Rate)
 A[`Sample_Rate]:(Max;`Sample_Rate)
 
 \
-
-/ example 4
-t:raze{("ZSFIISI";1#",")0:hsym`$"../e/",x}each string key`:../e
-
-T:`t
-G:`exchange`instrument
-A[`sourcetime]:(max;`sourcetime)
-A[`price]:(avg;`price)
-A[`size]:(avg;`size)
-
