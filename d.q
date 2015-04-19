@@ -17,7 +17,7 @@ yahoo:{[offset;stocks]
   i+:1];
  (lower cols tbl)xcol`Date`Sym xasc select from tbl where not null Volume}  
 
-t:update N:1 from yahoo[30]distinct`C`GOOG`MSFT`FB`GS / ,exec sym from stocks where i in neg[rand 200]?count sym
+t:update N:1 from yahoo[30]exec sym from stocks where i in neg[rand 200]?count sym
 t:t lj 1!stocks
 t:raze{update trader:count[sym]#x from select from t where i in neg[rand count sym]?count sym}each traders
 t:update mpl:sum pnl by"m"$date,sym from update pnl:0^volume*close-prev close by sym from t
@@ -96,7 +96,7 @@ P:(([n:((`symbol$())					!();
 
 / example 3
 
-t:get`:../../itunes
+t:get`:../itunes
 
 T:`t
 G:`Genre`Album`Artist`Name
