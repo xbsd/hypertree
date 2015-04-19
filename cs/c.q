@@ -24,8 +24,9 @@ $[.z.K<3.3;
 .z.ws:{.js.rcv .js.sym .j.k x}
 
 / utilities
+.js.inf:{k:exec c!t$1%0 from meta x where t in"ijf";![x;();0b;key[k]!({@[x;where x in y,neg y;:;first 0#x]};;)'[key k;get k]]}
 .js.sym:{$[(t:abs type x)in 0 99h;.z.s each x;10=t;`$x;x]}
-.js.sub:{flip each(1#x;.js.row[1_x]. R`start`end)}
+.js.sub:{flip each(.js.inf 1#x;.js.row[.js.inf 1_x]. R`start`end)}
 .js.row:{$[0 0W~y,z;x;y>=count x;0#x;((1+z-y)&count r)#r:y _ x]}
 .js.obj:{`Z`G`H`F`I`Q`S`R`N`T`O!(.js.sub Z;G;H;F;I;Q;`cols`sorts!(key S;get S);R;N;T;.js.nnd O)}
 .js.ret:{x,.js.obj[]}
