@@ -25,7 +25,7 @@ t:update row:i from t
 
 / connect to hypertable:
 T:`t
-G:`trader`date`sector`industry`sym
+G:`sym`date`trader`sector`industry
 F:`N`row`open`high`low`close`volume`pnl`mpl`lastsale`marketcap`ipoyear
 A[f]:avg,/:f:`open`high`low`close`pnl`mpl
 A[`volume]:(max;`volume)

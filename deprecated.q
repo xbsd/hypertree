@@ -14,4 +14,3 @@ msort:{[t;c;o;i]i{x y z x}/[til count i;o;flip[t i]c]}
 
 / mesh nest of paths
 pmesh:{i:1+x?-1_first y;(i#x),y,i _ x}
-
