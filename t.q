@@ -62,9 +62,9 @@ red:{[t;a]![t;();0b;a]}
 mapr:{[t;g;a;p;q;i;j]b:g~key c:p j;z:$[b;mapl[t;g;a]c;mapn[t;g;a;p;q;i;j]q j];mapt[b;z;g;a]c}
 mapl:{[t;g;a;p]order[g]leaf[t;g;a]p}
 mapn:{[t;g;a;p;q;i;j;v]0!order[g;node_[g;g i-1]0!?[t;v`w;k!k:i#g;a]],raze mapr[t;g;a;p;q;i+1]each v`c}
-/ mapt:{[b;t;g;a;c]order[g;node_[g;last key c]?[$[b;t;select from t where count[g]>=count each n_];t_[c]g;0b;a]],t}
-mapt:{[b;t;g;a;c]order[g;node_[g;last key c]mapa[b;update N_:1 from t;g;((1#`N_)!enlist(sum;`N)),a]c],t}
-mapa:{[b;t;g;a;c]delete N_ from?[$[b;t;select from t where count[g]>=count each n_];t_[c]g;0b;a]}
+mapo:{[t;a]$[101=type 2 first/a;(t;a);(update N_:0 from t;((1#`N_)!enlist(first;`N_)),a)]}
+mapt:{[b;t;g;a;c]order[g;node_[g;last key c]mapa[b;g;c]. mapo[t]a],t}
+mapa:{[b;g;c;t;a]delete N_ from?[$[b;t;select from t where count[g]>=count each n_];t_[c]g;0b;a]}
 
 / recursive constraints
 constraints:{[p]constraints_[([]w:();c:());p;c;0]first c:children p}
