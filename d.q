@@ -3,6 +3,23 @@
 \e 1
 \P 14
 
+/ example 1
+
+t:get`:../itunes/itunes
+
+T:`t
+G:`Genre`Album_Artist`Album`Name
+F:`Size`Total_Time`Disc_Number`Disc_Count`Track_Number`Track_Count`Year`Bit_Rate`Sample_Rate`Date_Added`Date_Modified
+L:0b
+
+Max:{max 0^x}
+A[`Year]:(Max;`Year)
+A[`Disc_Number]:(Max;`Disc_Number)
+A[`Bit_Rate]:(Max;`Bit_Rate)
+A[`Sample_Rate]:(Max;`Sample_Rate)
+
+\
+
 / example 2
 
 traders:(`$read0`:../yahoo/traders.txt)except`
@@ -42,7 +59,7 @@ L:0b
 
 \
 
-/ example 1
+/ example 3
 
 symbol:`msft`amat`csco`intc`yhoo`aapl
 trader:`chico`harpo`groucho`zeppo`moe`larry`curly`shemp`abbott`costello
@@ -91,22 +108,5 @@ P:(([n:((`symbol$())					!();
 	 `sector`trader`strategy`symbol			!`financials`curly`mergerarb`aapl;
 	 (1#`sector)					!1#`industrials)]
 	v:1111101b);([n:()]v:til 0))
-
-\
-
-/ example 3
-
-t:get`:../itunes
-
-T:`t
-G:`Genre`Album`Artist`Name
-F:`Size`Total_Time`Disc_Number`Disc_Count`Track_Number`Track_Count`Year`Bit_Rate`Sample_Rate`Date_Added`Date_Modified
-L:0b
-
-Max:{max 0^x}
-A[`Year]:(Max;`Year)
-A[`Disc_Number]:(Max;`Disc_Number)
-A[`Bit_Rate]:(Max;`Bit_Rate)
-A[`Sample_Rate]:(Max;`Sample_Rate)
 
 \
