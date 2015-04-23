@@ -5,7 +5,7 @@
 
 / example 1
 
-t:get`:../itunes/itunes
+t:get`:../itunes
 
 T:`t
 G:`Genre`Album`Album_Artist`Name
