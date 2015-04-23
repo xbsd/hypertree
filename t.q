@@ -49,7 +49,7 @@ open:{[z;t;a;g;f;p;p_]
  a:1!order[f]0!red[u]where[0<count each k]#k:r_ each n;
  delete N_ from `N_ xasc update N_:`$string n_ from 0!z,a}
 
-/ types (map-reduce, map, reduce)
+/ predicates: (map-reduce, map, reduce)
 m_r:{[a](0=type a)|first[a]in A}
 m_:{[a]$[0=type m:first a;m;a]}
 r_:{[a]$[0=type first a;first 1_a;()]}
@@ -74,7 +74,7 @@ mapa:{[b;g;c;t;a]delete N_ from?[$[b;t;select from t where count[g]>=count each 
 constraints:{[p]constraints_[([]w:();c:());p;c;0]first c:children p}
 constraints_:{[w;p;c;i;j]r:`w`c!(p_c[p i]p j;j);w,r,$[count j;raze .z.s[w;p;c]'[j;c j];()]}
 
-/ p and not c, c
+/ predicates: parent and not child, child
 p_c:{[p;c]a:$[n:count c;p_ c;c];b:$[m:count p;c_ p;p];$[n&m;b,a;n;a;m;b;()]}
 c_:{[c]key[c](=;;)'ensym each get c}
 n_:{[c]enlist(~:;c_ c)}
