@@ -8,7 +8,7 @@
 t:get`:../itunes
 
 T:`t
-G:`Genre`Album`Album_Artist`Name
+G:`Genre`Album`Artist`Name
 F:`Size`Total_Time`Disc_Number`Disc_Count`Track_Number`Track_Count`Year`Bit_Rate`Sample_Rate`Date_Added`Date_Modified
 L:0b
 
