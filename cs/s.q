@@ -13,7 +13,7 @@ K:0Ni
 .z.ps:{neg[K](`.js.exe;.js.exe x)}
 
 / entry points
-.js.node:{[d]$[.js.bot d`node;d;0=count n:.js.cnv d`node;d;count[Z]=r:Z[`n_]?n;d;[`P set .ht.at[not Z[`o_]r;P;G]n;.js.set d]]}
+.js.node:{[d]$[.js.bot d`node;d;0=count n:.js.cnv d`node;d;count[Z]=r:Z[`n_]?n;d;[`P set .ht.row[not Z[`o_]r;P;G]n;.js.set d]]}
 .js.sorts:{[d]`S set d[`cols]!d`sorts;`Z set .ht.sort[Z;G]S;.js.ret d}
 .js.groups:{[d]`F`G set'.js.sym d`visible`groups;`P set .ht.vpaths[P]G;`Z set();.js.set d}
 .js.get:{[d]`R set`start`end!"j"$d`start`end;.js.ret d}

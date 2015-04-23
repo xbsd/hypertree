@@ -129,7 +129,7 @@ opento:{[t;g;h]
  ([n:m]v:count[m]#1b)}
 
 / open/close at a node
-at:{[b;p;g;n]`n xasc'(p[0],([n:enlist(count[n]#g)!n,()]v:enlist b);p 0)}
+row:{[b;p;g;n]`n xasc'(p[0],([n:enlist(count[n]#g)!n,()]v:enlist b);p 0)}
 
 / rollup: first if 1=count else null
 nul:{first$[1=count distinct x,();x;0#x]}
@@ -138,7 +138,7 @@ nul:{first$[1=count distinct x,();x;0#x]}
 seq:{$[1=count distinct x;first x;`$string[first x],"+"]}
 
 / type -> rollup
-A:" bgxhijefcspmdznuvt"!(nul;any;nul;nul;sum;sum;sum;sum;sum;nul;seq;max;max;max;max;max;max;max;max)
+A:" bgxhijefcspmdznuvt"!(nul;any;nul;nul;sum;sum;sum;sum;sum;nul;seq;max;max;max;max;sum;max;max;max)
 
 / rollups
 rollups:{[t;g;a]@[rollups_[t]a;g;:;nul,'g]}
