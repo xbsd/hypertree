@@ -14,12 +14,12 @@ ctl:{[p;g;z]
  n_:z`n_;e_:isleaf[n_]g;l_:levelof n_;o_:isopen[n_]p;p_:parents n_;g_:@[`,na last each 1_n_;where e_;:;`];
  0!update n_:n_,e_:e_,l_:l_,p_:p_,o_:o_,g_:g_ from z}
 
+/ uncontrol table
+unctl:{[z]$[count z;1!delete e_,l_,p_,o_,g_ from z;()]}
+
 / na
 NA:`$"N/A"
 na:{@[x;where null x;:;NA]}
- 
-/ uncontrol table
-unctl:{[z]$[count z;1!delete e_,l_,p_,o_,g_ from z;()]}
 
 / predicates
 isopen:{[n;p](0!p)[`v](get each key[p]`n)?n}
